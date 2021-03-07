@@ -1,0 +1,28 @@
+3/5/2021
+
+Angular Architectrue
+    - Angular app - one ore more modules
+    - Module - One or more components and services
+    - Components - HTML + Class
+    - Services - Vusiness logic
+    - Modules interact and ultimately render the view in the browser
+
+
+defult pakages 
+    - package.json
+        - things you need to run the service 
+        - will dowload everthing for you
+
+    - src folder
+        - app.module.ts: is the main modul
+
+
+
+3/7/2021
+
+#to run the serve 
+ng serve
+
+#to create a new component
+ng <generate> <components> <_name_>
+ng g c test
