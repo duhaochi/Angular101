@@ -19,6 +19,7 @@ defult pakages
 
 
 3/7/2021
+https://www.youtube.com/watch?v=16rQyEQtpyQ&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=4
 
 #to run the serve 
 ng serve
@@ -26,3 +27,32 @@ ng serve
 #to create a new component
 ng <generate> <components> <_name_>
 ng g c test
+
+There are three ways to delclare a selector 
+1. 'app-name'
+    <app-name></app-name>
+
+2. '.app-name'
+    <div class="app-name"></div>
+
+3. '[app-test]'
+    <div app-test></div>
+
+
+Inline template and style
+
+use ` (~) to write html or css right in typescript
+
+note:
+    Any new component has to be imported and added to the module in the declarations array int app.module.ts
+    this should already be done for you if you used the [ng g c _name_] command
+
+
+INTERPOLATION
+https://www.youtube.com/watch?v=2a6OfacW_-I&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=6&ab_channel=Codevolution
+
+#to declare a variable 
+public _name_ = _value_
+
+#string concatinate 
+{{"Welcome " + _name_ }}
