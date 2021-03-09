@@ -1,4 +1,7 @@
 3/5/2021
+-------------
+Introduction|
+-------------
 
 Angular Architectrue
     - Angular app - one ore more modules
@@ -19,6 +22,9 @@ defult pakages
 
 
 3/7/2021
+-------------
+Components  |
+-------------
 https://www.youtube.com/watch?v=16rQyEQtpyQ&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=4
 
 #to run the serve 
@@ -38,17 +44,19 @@ There are three ways to delclare a selector
 3. '[app-test]'
     <div app-test></div>
 
-
+_________________________
 Inline template and style
 
-use ` (~) to write html or css right in typescript
+use (`<code>`) to write html or css right in typescript
 
 note:
     Any new component has to be imported and added to the module in the declarations array int app.module.ts
     this should already be done for you if you used the [ng g c _name_] command
 
 
-INTERPOLATION
+--------------
+INTERPOLATION|
+--------------
 https://www.youtube.com/watch?v=2a6OfacW_-I&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=6&ab_channel=Codevolution
 
 #to declare a variable 
@@ -56,3 +64,64 @@ public _name_ = _value_
 
 #string concatinate 
 {{"Welcome " + _name_ }}
+
+
+
+3/8/2021
+----------------
+Property Binding|
+----------------
+https://www.youtube.com/watch?v=N8FBmB2jme8&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=6
+
+Attributes and properties are not the same
+Attributes is defined by the HTML
+Properties is defined by the Document Object Module
+
+Attribute balues cannot be changed once they are initialized
+
+so how can we do proberty binding in HTML from java scrip so that we have a dynamic data flow
+hint: use []
+
+examples:
+<input [disabled]="true" [id]="id" type="text">
+        ^                      ^
+        |                      |_______here id is actrully a public var name created in class
+        ----here disabled is one of the defult Attribute from the input tag, we are setting it to true, 
+
+Another way to do the samething is to use "bind-<Attribute_name>": 
+<input bind-disabled="is_disabled" [id]="id" type="text">
+        ^
+        |______this is the same as the one above just different sytext 
+
+
+----------------
+Class Binding  |
+----------------
+Youtube Tutorio
+https://www.youtube.com/watch?v=Y6OP-lPJxgs&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=9&ab_channel=Codevolution
+Official documentation
+https://angular.io/guide/attribute-binding
+
+{{{{regular class attribute becomes a dummy attribute in the presence of a class binding}}}
+    - This is not true anymore in terms of the reacent updates of Angular, is good to know incase 
+    software is running on old version of Angula
+
+    <input class="text-success" bind-class="special_class" bind-disabled="is_disabled" type="text">
+    - again you can use both classbinding and regular class="", both will work together
+
+How to assign a class base on boolen values
+<input [class.text-success]="false"  bind-disabled="is_disabled" type="text">
+        ^                     ^
+        |                     |
+        |_____________________|_______now the class will depend on the boolen given, examples only set to true
+                                        when the user have enterd the right input
+
+How to conditionally apply multiple classes angular provides a method below
+    <input [ngClass]="messageClasses"  bind-disabled="is_disabled" type="text">
+
+    int TestComponent css
+    public messageClasses = {
+    "text-success": !this.is_disabled,
+    "text-special": this.is_special,
+    "text-fail": this.is_disabled
+    }

@@ -15,12 +15,20 @@ import { Component, OnInit } from '@angular/core';
   <!--
     calling class function
   -->
-    <h2>{{say_hello()}}</h2>
+    <h2 class="text-success" [class]="special_class">{{say_hello()}}</h2>
 
     <h3>{{"the URL of this page is: " + URL}}</h3>
 
+    <input [disabled]="is_disabled" [id]="id" type="text">
+    <input class="text-success" bind-disabled="is_disabled" type="text">
+
+    <input class="text-success" bind-class="special_class" bind-disabled="is_disabled" type="text">
+
+    <input [ngClass]="messageClasses"  bind-disabled="is_disabled" type="text">
+
   `,
-  styleUrls: ['./test.component.css']
+  styleUrls: ['./test.component.css',
+              './test.textStyle.css']
 })
 export class TestComponent implements OnInit {
 
@@ -29,6 +37,22 @@ export class TestComponent implements OnInit {
   private names = "Hui & Du"
   constructor() { }
   public URL = window.location.href
+
+  public id = "my id";
+
+  public is_disabled = false;
+  public is_special = true;
+  public special_class = "text-special";
+  
+  public messageClasses = {
+    "text-success": !this.is_disabled,
+    "text-special": this.is_special,
+    "text-fail": this.is_disabled
+
+  }
+
+
+
   ngOnInit(): void {
   }
 
