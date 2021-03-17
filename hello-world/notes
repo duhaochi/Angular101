@@ -119,9 +119,71 @@ How to assign a class base on boolen values
 How to conditionally apply multiple classes angular provides a method below
     <input [ngClass]="messageClasses"  bind-disabled="is_disabled" type="text">
 
-    int TestComponent css
+    in TestComponent css
     public messageClasses = {
     "text-success": !this.is_disabled,
     "text-special": this.is_special,
     "text-fail": this.is_disabled
     }
+
+
+--------------|
+style Binding |
+--------------|
+Youtube Tutorio
+https://www.youtube.com/watch?v=q256X6-u9Q8&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=8&ab_channel=Codevolution
+
+bellow is how you do conditional statment in HTML
+<h2 [style.color]="hasError ? 'red' : 'green'">Style Binding</h2>
+- hasError is a variable declared in class
+
+ <h2 [style.color]="highlight">Style Binding</h2>
+ - highlight is a variable declared in class
+
+binding a group of style created in class
+  <h2 [style] = "titleStyles">Style Binding</h2>
+
+
+
+
+--------------|
+event Binding |
+--------------|
+Youtube Tutorio
+https://www.youtube.com/watch?v=ZfIc1_oj7uM&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=9&ab_channel=Codevolution
+
+respond to user event such as mouse and keyborad, lets make it interactive now!
+
+ <button (click)="onClick"> OK </button>
+ we can implemetn onClick in the class as a function like following
+  onClick(){
+    this.colors = "red"
+  }
+
+
+use $event as an input for the function to get all the information about that click
+ <button (click)="onClick($event)"> OK </button>
+
+ in the class you have to give event a type like following 
+ onClick(event: Event){
+    console.log(event)
+    this.colors = "red"
+  }
+here I gived the event a type Event, there is another way to "fix" this but is not recommanded
+https://stackoverflow.com/questions/44521323/angular2-parameter-event-implicitly-has-any-type
+
+
+----------------------------|
+Template Reference Variables|
+----------------------------|
+Youtube Tutorio
+https://www.youtube.com/watch?v=Oo0-r_YhoJs&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=11&ab_channel=Codevolution
+
+<input #userInput type="text">
+<button (click)="logMessage(userInput)">log</button>
+
+in class
+  onClick(event: string){
+    console.log(event)
+    this.titleStyles.color = "red"
+  }
